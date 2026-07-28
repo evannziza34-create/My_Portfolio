@@ -12,3 +12,16 @@ const revealObserver = new IntersectionObserver((entries) => {
 });
 
 revealElements.forEach((element) => revealObserver.observe(element));
+
+const contactForm = document.getElementById('contact-form');
+const contactFeedback = document.getElementById('contact-feedback');
+
+if (contactForm && contactFeedback) {
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        contactFeedback.textContent = 'Feature unavailable right now — please try again later.';
+        contactFeedback.classList.add('visible');
+        setTimeout(() => contactFeedback.classList.remove('visible'), 4000);
+    });
+}
+
